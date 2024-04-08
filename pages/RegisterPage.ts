@@ -83,7 +83,6 @@ export default class RegisterPage {
   async getAllErrorMessage() {
     await this.page.waitForSelector("[class=ant-form-item-explain-error]", { state: "visible" });
     const allErrorMessage = await this.errorMessage.allTextContents();
-    console.log(allErrorMessage);
     return allErrorMessage;
   }
 }
