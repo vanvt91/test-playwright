@@ -1,0 +1,25 @@
+1. Verify that an error message is displayed when the email field is left blank.
+2. Verify that an error message is displayed when an invalid email format is entered.
+3. Verify that the form accepts a valid email address.
+4. Verify that an error message is displayed when the last name field is left blank.
+5. Verify that the form accepts a valid last name.
+6. Verify that an error message is displayed when the first name field is left blank.
+7. Verify that the form accepts a valid first name.
+8. Verify that the dropdown list is visible and clickable.
+9. Verify that all options are available in the dropdown list.
+10. Verify that the form accepts a selection from the dropdown list.
+11. Verify that all checkboxes are visible and clickable.
+12. Verify that multiple checkboxes can be selected simultaneously.
+13. Verify that the form accepts a selection of one or more checkboxes.
+14. Verify that all radio buttons are visible and clickable.
+15. Verify that only one radio button can be selected at a time.
+16. Verify that the form accepts a selection of one radio button.
+17. Verify that the explanation text area is visible and editable.
+18. Verify that the form accepts input in the explanation text area.
+19. Verify that the submit button is visible and clickable.
+20. Verify that clicking the submit button submits the form data.
+21. Verify that appropriate action is taken upon form submission
+22. Verify that the form submission is successful with valid inputs in all fields.
+23. Verify that the form submission fails if any mandatory field is left blank.
+24. Verify that the form submission fails if an invalid email address is entered.
+25. Verify that the form submission is successful with a valid email address and all other fields filled appropriately.
