@@ -31,6 +31,15 @@ test.describe("Register Form", () => {
     expect(successMessage).toEqual("Your inquiry has been submitted successfully!");
   });
 
+  test("Submit form with invalid email", async ({ registerPage }) => {
+    const testFormData = { ...formData };
+    testFormData.email = "invalidEmail";
+    await registerPage.fillFormRegister(testFormData);
+    await registerPage.clickSubmit();
+    const successMessage = await registerPage.getErrorMessage();
+    expect(successMessage).toEqual("'email' is not a valid email");
+  });
+
   test("Submit form with all empty fields", async ({ registerPage }) => {
     await registerPage.clickSubmit();
     const expectedErrorMessages = [
