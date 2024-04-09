@@ -12,4 +12,4 @@ export const test = base.extend<PageObjects>({
   },
 });
 
-export { expect, Page, Locator, Response } from "@playwright/test";
+export { expect, type Page, type Locator } from "@playwright/test";

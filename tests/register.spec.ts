@@ -5,14 +5,27 @@ test.describe("Register Form", () => {
     registerPage.open();
   });
 
+  const testData = [
+    { field: "email", message: "'email' is required" },
+    { field: "lastName", message: "'lastName' is required" },
+    { field: "firstName", message: "'firstName' is required" },
+    { field: "whereDidYouHearAboutUs", message: "'infoSource' is required" },
+    { field: "servicesOfInterest", message: "'servicesOfInterest' is required" },
+    { field: "typeOfAssociation", message: "'typeOfAssociation' is required" },
+  ];
+
+  const formData = {
+    email: "test@example.com",
+    lastName: "Doe",
+    firstName: "John",
+    whereDidYouHearAboutUs: "Other",
+    servicesOfInterest: ["Printing", "Logistics"],
+    typeOfAssociation: "Reseller",
+    explanation: "I am a tester.",
+  };
+
   test("Submit form with valid data", async ({ registerPage }) => {
-    await registerPage.enterEmail("test@example.com");
-    await registerPage.enterLastName("Doe");
-    await registerPage.enterFirstName("John");
-    await registerPage.selectWhereDidYouHearAboutUs("Other");
-    await registerPage.selectServicesOfInterest(["Printing", "Logistics"]);
-    await registerPage.selectTypeOfAssociation("Reseller");
-    await registerPage.enterExplanation("I am a tester.");
+    await registerPage.fillFormRegister(formData);
     await registerPage.clickSubmit();
     const successMessage = await registerPage.getSubmitSuccessMessage();
     expect(successMessage).toEqual("Your inquiry has been submitted successfully!");
@@ -31,4 +44,17 @@ test.describe("Register Form", () => {
     const errorMessage = await registerPage.getAllErrorMessage();
     expect(errorMessage).toEqual(expectedErrorMessages);
   });
+
+  for (const data of testData) {
+    const { field, message } = data;
+    test(`Submit form with ${field} field empty`, async ({ registerPage }) => {
+      const testFormData = { ...formData };
+      delete testFormData[field];
+      await registerPage.fillFormRegister(testFormData);
+      await registerPage.clickSubmit();
+      const expectedErrorMessages = message;
+      const errorMessage = await registerPage.getErrorMessage();
+      expect(errorMessage).toEqual(expectedErrorMessages);
+    });
+  }
 });

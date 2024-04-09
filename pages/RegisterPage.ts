@@ -85,4 +85,16 @@ export default class RegisterPage {
     const allErrorMessage = await this.errorMessage.allTextContents();
     return allErrorMessage;
   }
+
+  async fillFormRegister(formData: Record<string, any>) {
+    const { email, lastName, firstName, whereDidYouHearAboutUs, servicesOfInterest, typeOfAssociation, explanation } =
+      formData;
+    await this.enterEmail(email || "");
+    await this.enterLastName(lastName || "");
+    await this.enterFirstName(firstName || "");
+    if (whereDidYouHearAboutUs !== undefined) await this.selectWhereDidYouHearAboutUs(whereDidYouHearAboutUs);
+    await this.selectServicesOfInterest(servicesOfInterest || "");
+    if (typeOfAssociation !== undefined) await this.selectTypeOfAssociation(typeOfAssociation);
+    await this.enterExplanation(explanation || "");
+  }
 }
